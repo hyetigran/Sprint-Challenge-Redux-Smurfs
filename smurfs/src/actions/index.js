@@ -24,16 +24,15 @@ export const FETCH_SMURF_START = 'FETCH_SMURF_START';
 export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS';
 export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL';
 
-export const addSmurf = (name, age, height) => {
-	return {
-		type: ADD_SMURF,
-		payload: {
-			name,
-			age,
-			height,
-			id: uuid()
-		}
-	};
+export const addSmurf = data => dispatch => {
+	return axios
+		.post('http://localhost:3333/smurfs', data)
+		.then(res => {
+			dispatch({ type: ADD_SMURF, payload: res.data });
+		})
+		.catch(err => {
+			console.log(err);
+		});
 };
 
 export const deleteSmurf = id => {

@@ -33,7 +33,12 @@ class SmurfForm extends React.Component {
 	};
 
 	onAddSmurf = () => {
-		this.props.addSmurf(this.state.form.nameValue, this.state.form.ageValue, this.state.form.heightValue);
+		const data = {
+			name: this.state.form.nameValue,
+			age: this.state.form.ageValue,
+			height: this.state.form.heightValue
+		};
+		this.props.addSmurf(data);
 	};
 
 	render() {
