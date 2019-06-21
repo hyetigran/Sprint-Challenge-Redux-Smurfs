@@ -14,6 +14,7 @@
    D - deleteSmurf
 */
 import axios from 'axios';
+import uuid from 'uuid';
 
 export const ADD_SMURF = 'ADD_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
@@ -23,10 +24,15 @@ export const FETCH_SMURF_START = 'FETCH_SMURF_START';
 export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS';
 export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL';
 
-export const addSmurf = smurfs => {
+export const addSmurf = (name, age, height) => {
 	return {
 		type: ADD_SMURF,
-		smurfs: smurfs
+		payload: {
+			name,
+			age,
+			height,
+			id: uuid()
+		}
 	};
 };
 

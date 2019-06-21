@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import * as actions from '../actions/index';
 import Smurf from './Smurf';
+import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -25,6 +26,7 @@ class App extends Component {
 				{this.props.smurfs.map(smurf => (
 					<Smurf key={smurf.id} smurf={smurf} deleteSmurf={this.props.onDeleteSmurf} />
 				))}
+				<SmurfForm />
 			</div>
 		);
 	}
