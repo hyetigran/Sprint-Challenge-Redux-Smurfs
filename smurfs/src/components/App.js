@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import * as actions from '../actions/index';
+import Smurf from './Smurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -21,7 +22,9 @@ class App extends Component {
 				<div>Welcome to your Redux version of Smurfs!</div>
 				<div>Start inside of your `src/index.js` file!</div>
 				<div>Have fun!</div>
-				{this.props.smurfs.map(smurf => <div>{smurf.name}</div>)}
+				{this.props.smurfs.map(smurf => (
+					<Smurf key={smurf.id} smurf={smurf} deleteSmurf={this.props.onDeleteSmurf} />
+				))}
 			</div>
 		);
 	}
@@ -37,6 +40,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onFetchSmurfs: () => {
 			dispatch(actions.fetchSmurfs());
+		},
+		onDeleteSmurf: id => {
+			dispatch(actions.deleteSmurf(id));
 		}
 	};
 };
